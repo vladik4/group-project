@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - StayFinder</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🏠</span>
+                    <span class="logo-text">StayFinder</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="search.html" class="nav-link">Find Stays</a>
+                    <a href="login.html" class="nav-link">Login</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Dashboard -->
+    <main class="admin-page">
+        <div class="container">
+            <div class="admin-header">
+                <h1 class="admin-title">Owner Admin Dashboard</h1>
+                <p class="admin-subtitle">Manage your properties and bookings</p>
+            </div>
+
+            <!-- Dashboard Stats -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">🏠</div>
+                    <div class="stat-info">
+                        <h3 class="stat-value">5</h3>
+                        <p class="stat-label">Active Listings</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-info">
+                        <h3 class="stat-value">24</h3>
+                        <p class="stat-label">Total Bookings</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-info">
+                        <h3 class="stat-value">$6,480</h3>
+                        <p class="stat-label">Total Revenue</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-info">
+                        <h3 class="stat-value">4.8</h3>
+                        <p class="stat-label">Avg Rating</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Sections -->
+            <div class="admin-layout">
+                <!-- Properties Management -->
+                <section class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title">My Properties</h2>
+                        <button class="btn-primary" onclick="alert('Add Property feature - Coming soon!')">+ Add Property</button>
+                    </div>
+                    <div class="properties-list">
+                        <div class="property-card-admin">
+                            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=300&q=80" alt="Property" class="property-admin-image">
+                            <div class="property-admin-details">
+                                <h3 class="property-admin-name">Cozy Downtown Apartment</h3>
+                                <p class="property-admin-location">📍 0.5 km from center</p>
+                                <div class="property-admin-meta">
+                                    <span class="property-admin-price">$85/night</span>
+                                    <span class="property-admin-rating">⭐ 4.9</span>
+                                </div>
+                                <div class="property-admin-status">
+                                    <span class="status-badge active">Active</span>
+                                </div>
+                                <div class="property-admin-actions">
+                                    <button class="btn-secondary btn-small">Edit</button>
+                                    <button class="btn-secondary btn-small">View</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bookings Management -->
+                <section class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Recent Bookings</h2>
+                        <select class="filter-select">
+                            <option>All Statuses</option>
+                            <option>Confirmed</option>
+                            <option>Pending</option>
+                            <option>Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="bookings-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Guest</th>
+                                    <th>Property</th>
+                                    <th>Dates</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>Cozy Downtown Apartment</td>
+                                    <td>Dec 15-18, 2024</td>
+                                    <td>$270.00</td>
+                                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                                    <td><button class="btn-link">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Jane Smith</td>
+                                    <td>Modern Studio Loft</td>
+                                    <td>Dec 20-22, 2024</td>
+                                    <td>$190.00</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td><button class="btn-link">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Mike Johnson</td>
+                                    <td>Cozy Downtown Apartment</td>
+                                    <td>Dec 25-28, 2024</td>
+                                    <td>$255.00</td>
+                                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                                    <td><button class="btn-link">View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Wireframe Note -->
+            <div class="wireframe-note">
+                <h3>📋 Dashboard Concept Notes</h3>
+                <p><strong>Full Implementation Would Include:</strong></p>
+                <ul>
+                    <li>Property CRUD operations (Create, Read, Update, Delete)</li>
+                    <li>Photo upload and gallery management</li>
+                    <li>Pricing and availability calendar</li>
+                    <li>Real-time booking notifications</li>
+                    <li>Revenue analytics and reporting</li>
+                    <li>Guest communication center</li>
+                    <li>Review management system</li>
+                    <li>Property performance metrics</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts/admin.js"></script>
+</body>
+</html>

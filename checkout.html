@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - StayFinder</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🏠</span>
+                    <span class="logo-text">StayFinder</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="search.html" class="nav-link">Find Stays</a>
+                    <a href="login.html" class="nav-link">Login</a>
+                    <a href="signup.html" class="nav-link btn-secondary">Sign Up</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Checkout Page -->
+    <main class="checkout-page">
+        <div class="container">
+            <div class="checkout-layout">
+                <!-- Booking Summary -->
+                <div class="checkout-summary">
+                    <h2 class="checkout-title">Booking Summary</h2>
+                    <div class="summary-card">
+                        <div class="summary-image">
+                            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&q=80" alt="Property" id="summaryImage">
+                        </div>
+                        <div class="summary-details">
+                            <h3 class="summary-property-name" id="summaryPropertyName">Cozy Downtown Apartment</h3>
+                            <div class="summary-info">
+                                <div class="summary-item">
+                                    <span class="summary-label">Check-in:</span>
+                                    <span class="summary-value" id="summaryCheckIn">Dec 15, 2024</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Check-out:</span>
+                                    <span class="summary-value" id="summaryCheckOut">Dec 18, 2024</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Guests:</span>
+                                    <span class="summary-value">2 guests</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Nights:</span>
+                                    <span class="summary-value">3 nights</span>
+                                </div>
+                            </div>
+                            <div class="summary-price-breakdown">
+                                <div class="price-row">
+                                    <span>Price per night</span>
+                                    <span>$85.00</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Service fee</span>
+                                    <span>$15.00</span>
+                                </div>
+                                <div class="price-row total">
+                                    <span>Total</span>
+                                    <span class="total-amount" id="totalAmount">$270.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Section -->
+                <div class="checkout-payment">
+                    <h2 class="checkout-title">Payment Method</h2>
+                    
+                    <!-- Credit/Debit Card Form -->
+                    <div class="payment-method" id="cardPayment">
+                        <h3 class="payment-method-title">Credit / Debit Card</h3>
+                        <form class="payment-form" id="cardForm" onsubmit="handleCardPayment(event)">
+                            <div class="form-group">
+                                <label for="cardNumber" class="form-label">Card Number</label>
+                                <input type="text" id="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cardExpiry" class="form-label">Expiry Date</label>
+                                    <input type="text" id="cardExpiry" class="form-input" placeholder="MM/YY" maxlength="5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardCVC" class="form-label">CVC</label>
+                                    <input type="text" id="cardCVC" class="form-input" placeholder="123" maxlength="3" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardName" class="form-label">Cardholder Name</label>
+                                <input type="text" id="cardName" class="form-input" placeholder="John Doe" required>
+                            </div>
+                            <button type="submit" class="btn-primary btn-full">Pay with Card</button>
+                        </form>
+                    </div>
+
+                    <div class="payment-divider">
+                        <span>or</span>
+                    </div>
+
+                    <!-- Cryptocurrency Payment -->
+                    <div class="payment-method crypto-payment">
+                        <h3 class="payment-method-title">Pay with Cryptocurrency</h3>
+                        <p class="crypto-description">Pay securely using USDT or ETH</p>
+                        <button class="btn-crypto" onclick="openCryptoModal()">
+                            <span class="crypto-icon">₿</span>
+                            Pay with Crypto (USDT, ETH)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Crypto Payment Modal -->
+    <div class="modal" id="cryptoModal">
+        <div class="modal-content modal-crypto">
+            <button class="modal-close" onclick="closeCryptoModal()">&times;</button>
+            <div class="modal-body">
+                <h3 class="modal-title">Pay with Cryptocurrency</h3>
+                <div class="crypto-options">
+                    <button class="crypto-option-btn active" onclick="selectCrypto('usdt')">USDT</button>
+                    <button class="crypto-option-btn" onclick="selectCrypto('eth')">ETH</button>
+                </div>
+                <div class="crypto-payment-info" id="cryptoPaymentInfo">
+                    <div class="crypto-amount">
+                        <p class="crypto-label">Amount to pay:</p>
+                        <p class="crypto-value" id="cryptoAmount">$270.00 USD</p>
+                        <p class="crypto-equivalent" id="cryptoEquivalent">≈ 0.1234 USDT</p>
+                    </div>
+                    <div class="crypto-qr">
+                        <div class="qr-code-placeholder" id="qrCode">
+                            <div class="qr-pattern"></div>
+                            <p>QR Code</p>
+                        </div>
+                    </div>
+                    <div class="crypto-address">
+                        <label class="form-label">Wallet Address</label>
+                        <div class="address-input-group">
+                            <input type="text" class="form-input" id="walletAddress" value="0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb" readonly>
+                            <button class="btn-copy" onclick="copyAddress()">Copy</button>
+                        </div>
+                        <small class="form-hint">Send exactly <strong id="cryptoExactAmount">0.1234 USDT</strong> to this address</small>
+                    </div>
+                    <div class="crypto-note">
+                        <p>⚠️ Payment confirmation may take a few minutes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/checkout.js"></script>
+</body>
+</html>
